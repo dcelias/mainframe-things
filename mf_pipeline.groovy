@@ -82,42 +82,42 @@ stage("Promote no ChangeMan (Pendente) * ")
     }
 }
  
-stage("Executar Testes Unitários")
+stage("Executa Testes Unitários")
 {
     node
     {
-                            //Download the test from github
-                                         checkout changelog: false, 
-                                                       poll: false, 
-                                                       scm: [$class: 'GitSCM', 
-                                                       branches: [[name: '*/master']], 
-                                                       doGenerateSubmoduleConfigurations: false, 
-                                                       extensions: [], 
-                                                       submoduleCfg: [], 
-                                                       userRemoteConfigs: 
-                                                                     [[credentialsId: github_credentials, 
-                                                                     name: 'origin', 
-                                                                     url: github_url]]]
+        // Download do projeto de teste do GitLab
+        checkout changelog: false, 
+        poll: false, 
+        scm: [$class: 'GitSCM', 
+        branches: [[name: '*/master']], 
+        doGenerateSubmoduleConfigurations: false, 
+        extensions: [], 
+        submoduleCfg: [], 
+        userRemoteConfigs: 
+        [[credentialsId: github_credentials, 
+        name: 'origin', 
+        url: github_url]]]
     }
 
     node
     {
-                                         //            Run Total Test Jenkins Plugin
-                                                       step([$class: 'TotalTestBuilder', 
-                                                       ccRepo:                            "${CC_repo}",
-                                                       ccSystem:                          "${CHG_appl}", 
-                                                       ccTestId:                          "${CHG_comp}", 
-                                                       connectionId:                      "${HCI_ID}", 
-                                                       credentialsId:                     "${Jenkins_Id}", 
-                                                       deleteTemp:                         true, 
-                                                       hlq:                                '',
-                                                       jcl:                               "${TTT_Jcl}", 
-                                                       projectFolder:                     "${TTT_Project}", 
-                                                       testSuite:                         "${TTT_TestPackage}${TTT_PackageType}", 
-                                                       useStubs:                           true])
+        // Executa o plugin do Total Test no Jenkins
+        step([$class: 'TotalTestBuilder', 
+        ccRepo:                            "${CC_repo}",
+        ccSystem:                          "${CHG_appl}", 
+        ccTestId:                          "${CHG_comp}", 
+        connectionId:                      "${HCI_ID}", 
+        credentialsId:                     "${Jenkins_Id}", 
+        deleteTemp:                         true, 
+        hlq:                                '',
+        jcl:                               "${TTT_Jcl}", 
+        projectFolder:                     "${TTT_Project}", 
+        testSuite:                         "${TTT_TestPackage}${TTT_PackageType}", 
+        useStubs:                           true])
         
-                                         //            Process the Total Test result files into Jenkins
-                                                       junit keepLongStdio: true, testResults: "${TTT_Dir}/*.xml"
+        // Processa os resultados do Total Test no jenkins
+        junit keepLongStdio: true, testResults: "${TTT_Dir}/*.xml"
     }
     
 }
@@ -126,28 +126,29 @@ stage("Resultados da Cobertura de Código")
 {
     node
     {
-                                         //Download the Source From PDSe do ChangeMan
-                                         checkout([
-                                         $class: 'PdsConfiguration', 
-                                         connectionId: HCI_ID, 
-                                         credentialsId: Jenkins_Id, 
-                                         fileExtension: COBOL, 
-                                         filterPattern: CHG_source, 
-                                         targetFolder: ''
-                                         ])
+        //Download do código fonte do PDSe do ChangeMan
+        checkout([
+        $class: 'PdsConfiguration', 
+        connectionId: HCI_ID, 
+        credentialsId: Jenkins_Id, 
+        fileExtension: COBOL, 
+        filterPattern: CHG_source, 
+        targetFolder: ''
+        ])
     }
 }
  
     node
     {
-                                         // Retrieve Code Coverage Data
-                                                       step([
-                                                                     $class: 'CodeCoverageBuilder',
-                                                                     analysisProperties:               CC_properties,
-                                                                     analysisPropertiesPath: '',
-                                                                     connectionId:                               "${HCI_ID}",
-                                                                     credentialsId:                                Jenkins_Id
-                                                                     ])
+        // Recupera informacoes do Code Coverage 
+        step 
+        ([
+                $class: 'CodeCoverageBuilder',
+                analysisProperties:               CC_properties,
+                analysisPropertiesPath: '',
+                connectionId:                               "${HCI_ID}",
+                credentialsId:                                Jenkins_Id
+        ])
     }
 
 
@@ -155,46 +156,43 @@ stage("SonarQube Analysis")
 {
     node
     {
-                                         // Requires SonarQube Scanner 2.8+
-                                                       def scannerHome = tool 'scanner';
-                                                       withSonarQubeEnv('sonar.ctsp.des.cloud.ihf') 
-                                                       {
-                                                       // Run SonarQube Scanner 
-                                                                     def SQ_Tests                = " -Dsonar.tests=${TTT_Project} -Dsonar.testExecutionReportPaths=${TTT_Sonar}/${TTT_TestPackage}.xml -Dsonar.coverageReportPaths=Coverage/CodeCoverage.xml"
-                                                                     def SQ_ProjectKey           = " -Dsonar.projectKey=${SQ_Project} -Dsonar.projectName=${SQ_Project} -Dsonar.projectVersion=1.0"
-                                                                     def SQ_Source               = " -Dsonar.sources=${CHG_source}"
-                                                                     def SQ_Copybook             = " -Dsonar.cobol.copy.directories=${CHG_source}"
-                                                                     def SQ_Cobol_conf           = " -Dsonar.cobol.file.suffixes=cbl,testsuite,testscenario,stub -Dsonar.cobol.copy.suffixes=cpy -Dsonar.sourceEncoding=UTF-8"
-                                                                     sh "${scannerHome}/sonar-scanner -X" + SQ_Tests + SQ_ProjectKey + SQ_Source + SQ_Copybook + SQ_Cobol_conf 
-                                                       }
+        // Requires SonarQube Scanner 2.8+
+        def scannerHome = tool 'scanner';
+        withSonarQubeEnv('sonar.ctsp.des.cloud.ihf') 
+        {
+            // Executa o SonarQube Scanner 
+            def SQ_Tests                = " -Dsonar.tests=${TTT_Project} -Dsonar.testExecutionReportPaths=${TTT_Sonar}/${TTT_TestPackage}.xml -Dsonar.coverageReportPaths=Coverage/CodeCoverage.xml"
+            def SQ_ProjectKey           = " -Dsonar.projectKey=${SQ_Project} -Dsonar.projectName=${SQ_Project} -Dsonar.projectVersion=1.0"
+            def SQ_Source               = " -Dsonar.sources=${CHG_source}"
+            def SQ_Copybook             = " -Dsonar.cobol.copy.directories=${CHG_source}"
+            def SQ_Cobol_conf           = " -Dsonar.cobol.file.suffixes=cbl,testsuite,testscenario,stub -Dsonar.cobol.copy.suffixes=cpy -Dsonar.sourceEncoding=UTF-8"
+            sh "${scannerHome}/sonar-scanner -X" + SQ_Tests + SQ_ProjectKey + SQ_Source + SQ_Copybook + SQ_Cobol_conf 
+        }
     }
 }
 
-stage("Check Quality Gate")
+stage("Verifica Quality Gate")
 {
     node
     { 
-                                         timeout(time: 5, unit: 'MINUTES') 
-                                         {
-                                                       // Wait for webhook call back from SonarQube
-                                                                     withSonarQubeEnv('sonar.ctsp.des.cloud.ihf') {
-                                                                     def qg = waitForQualityGate()
-                                                                     if (qg.status != 'OK')
-                                                                                   {
-                                                                                   echo "Pipeline aborted due to quality gate failure: ${qg.status}"
-                                                                                  // If the quality gate is anything other than Green, regress the promoted code
-                                                                                   // Define variables to be used to call CHANGEMAN
-                                                                                   // Call CHANGEMAN Operation
-                                                                                   error "Exiting Pipeline"
-                                                                                   }
-                                                                     else
-                                                                                   {
-                                                                                   echo "Quality Gate status is: {${qg.status}"
-                                                                                   }
+        timeout(time: 5, unit: 'MINUTES') 
+        {
+            // Espera pelo webhook call back enviado pelo SonarQube
+            withSonarQubeEnv('sonar.ctsp.des.cloud.ihf') 
+            {
+                def qg = waitForQualityGate()
+                if (qg.status != 'OK')
+                {
+                        echo "Você não passou no Quality Gate!: ${qg.status}"
+                        error "Pipeline foi quebrado. Verifique o Sonar do seu projeto."
+                }
+                else
+                {
+                        echo "Passou no Quality Gate: {${qg.status}"
+        
+                }
 
-
-                                                                     }
-
-                                         }   
+            }   
+        }
     }
 }
