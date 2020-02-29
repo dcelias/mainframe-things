@@ -16,6 +16,7 @@
               01 RES-SUB PIC 9(9).
               01 RES-ADD PIC 9(9).
               01 RES-MOV PIC X(9).
+			  *> Incluindo um comentario para testar o git diff
             PROCEDURE DIVISION.
               *> compute num1 times num2 and store result in numc
               COMPUTE NUMC = (NUM1 * NUM2).
@@ -28,6 +29,7 @@
               *> add numa to numb and store result in res-add
               ADD NUMA TO NUMB GIVING RES-ADD.
               *> the pointer from numa to
+			        *> teste
               MOVE NUMA TO RES-MOV.
               *> reinitilize num1
               INITIALIZE NUM1.
@@ -39,6 +41,5 @@
               DISPLAY "RES-SUB:"RES-SUB
               DISPLAY "RES-ADD:"RES-ADD
               DISPLAY "RES-MOV:"RES-MOV
-              DISPLAY "REINITIALIZED NUM1: "NUM1
-              DISPLAY "REINITIALIZED NUM2: "NUM2
+              DISPLAY "REINITIALIZED NUM1 !!: "NUM1
               STOP RUN.
