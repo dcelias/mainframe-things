@@ -16,7 +16,6 @@
               01 RES-SUB PIC 9(9).
               01 RES-ADD PIC 9(9).
               01 RES-MOV PIC X(9).
-			  *> Incluindo um comentario para testar o git diff
             PROCEDURE DIVISION.
               *> compute num1 times num2 and store result in numc
               COMPUTE NUMC = (NUM1 * NUM2).
