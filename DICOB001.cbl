@@ -41,10 +41,6 @@
            DISPLAY "RES-ADD:"RES-ADD
            DISPLAY "RES-MOV:"RES-MOV
            DISPLAY "REINITIALIZED NUM1 !!: "NUM1
-<<<<<<< HEAD
-           DISPLAY "TESTE :("
-=======
            DISPLAY "TESTE \o/"
->>>>>>> dev
            *> fazendo uma alteração no servidor do github
            STOP RUN.
