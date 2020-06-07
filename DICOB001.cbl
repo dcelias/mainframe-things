@@ -1,7 +1,7 @@
-      IDENTIFICATION DIVISION.
-      PROGRAM-ID. VERBS.
-      DATA DIVISION.
-      WORKING-STORAGE SECTION.
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. VERBS.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
         *> numbers we will perform operations on
         *> with verbs
        01 NUM1 PIC 9(9) VALUE 10.
@@ -16,7 +16,7 @@
        01 RES-SUB PIC 9(9).
        01 RES-ADD PIC 9(9).
        01 RES-MOV PIC X(9).
-      PROCEDURE DIVISION.
+       PROCEDURE DIVISION.
         *> compute num1 times num2 and store result in numc
            COMPUTE NUMC = (NUM1 * NUM2).
            *> divide numa by numb and store result in res-div
