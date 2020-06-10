@@ -56,11 +56,11 @@ if  (CHG_cics   = "S") {
      String CC_ddio       = "BIBCADES.COMPWARE.SRCBAT01"
 }
 
-String CC_properties      = 'cc.sources='          + CHG_source + 
-                            '\rcc.repos='          + CC_repo +
-                            '\rcc.system='         + CHG_appl +
-                            '\rcc.test='           + CHG_comp + 
-                            '\rcc.ddio.overrides=' + CC_ddio
+String CC_properties      = 'cc.sources='          + CHG_source +  // Indicate the relative path to the source directories to be used for the code coverage extraction
+                          '\rcc.repos='            + CC_repo +     // Indicate the code coverage repository from which to extract code coverage data
+                          '\rcc.system='           + CHG_appl +    // Indicate the system to be included in the scan (Pacote ChangeMan)
+                          '\rcc.test='             + CHG_comp +    // Indicate the test ID to be included in the scan (Componente do Pacote)
+                          '\rcc.ddio.overrides='   + CC_ddio       // Indicate the new location of the program's DDIO file if the file was moved or renamed from what is specified in the repository.
                                                                        
 // SonarQube ID usado para o Project Key e para o Project Name dentro
 String SQ_Project         = CHG_appl
@@ -86,7 +86,10 @@ stage("Executa Testes Unitários")
 {
     node
     {
-        // Download do projeto de teste do GitLab
+     // *************************************************
+     // Plugin utilizado ~> Pipeline: SCM Step
+     // Objetivo: Download do projeto de teste do GitLab
+     // *************************************************
         checkout changelog: false, 
         poll: false, 
         scm: [$class: 'GitSCM', 
@@ -102,7 +105,11 @@ stage("Executa Testes Unitários")
 
     node
     {
-        // Executa o plugin do Total Test no Jenkins
+     // *************************************************
+     // Plugin utilizado ~> Topaz for Total Test
+     // Objetivo: Executar o projeto de teste recuperado 
+     //           do Gitlab no mainframe (SECA)
+     // *************************************************
         step([$class: 'TotalTestBuilder', 
         ccRepo:                            "${CC_repo}",
         ccSystem:                          "${CHG_appl}", 
@@ -116,7 +123,7 @@ stage("Executa Testes Unitários")
         testSuite:                         "${TTT_TestPackage}${TTT_PackageType}", 
         useStubs:                           true])
         
-        // Processa os resultados do Total Test no jenkins
+        // Processa os resultados do Total Test no jenkins no arquivo xml
         junit keepLongStdio: true, testResults: "${TTT_Dir}/*.xml"
     }
     
@@ -126,7 +133,10 @@ stage("Resultados da Cobertura de Código")
 {
     node
     {
-        //Download do código fonte do PDSe do ChangeMan
+     // *************************************************
+     // Plugin utilizado ~> Compuware Source Code Download for Endevor, PDS, and ISPW
+     // Objetivo: Baixa o código do programa do PDSe do ChangeMan no Mainframe (SECA)
+     // *************************************************
         checkout([
         $class: 'PdsConfiguration', 
         connectionId: HCI_ID, 
@@ -140,7 +150,10 @@ stage("Resultados da Cobertura de Código")
  
     node
     {
-        // Recupera informacoes do Code Coverage 
+      // *************************************************
+      // Plugin utilizado ~> Compuware Xpediter Code Coverage
+      // Objetivo: Obter resultado da Cobertura de código
+      // *************************************************
         step 
         ([
                 $class: 'CodeCoverageBuilder',
