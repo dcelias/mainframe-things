@@ -2,9 +2,6 @@
        Program-id. Parms.
        Data Division.
        Working-storage Section.
-        *> Numbers We Will Perform Operations On
-        *> With Verbs
-
        01 Wparm-teste-1     Pic  X(34) Value 
           'TEST,SSR(ZLEN,ABD),NOOPT,OPT(0)'.
        01 Wparm-teste-2     Pic  X(34) Value 
