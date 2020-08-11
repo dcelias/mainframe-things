@@ -1,131 +1,131 @@
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. PARMS.
-       DATA DIVISION.
-       WORKING-STORAGE SECTION.
-        *> numbers we will perform operations on
-        *> with verbs
+       Identification Division.
+       Program-id. Parms.
+       Data Division.
+       Working-storage Section.
+        *> Numbers We Will Perform Operations On
+        *> With Verbs
 
-       01 WPARM-TESTE-1     PIC  X(34) VALUE 
-          'TEST,SSR(ZLEN,ABD),NOOPT,OPT(0)'.
-       01 WPARM-TESTE-2     PIC  X(34) VALUE 
-          'TEST(DAWRF),SSR(ZLEN,ABD),NOOPT'.  
-       01 WPARM-TESTE-3     PIC  X(34) VALUE 
-          'SSR(ZLEN,ABD),NOOPTMIZE'.   
-       01 WPARM-TESTE-4     PIC  X(34) VALUE 
-          'SSR(ZLEN,ABD),NOOPTMIZE'.  
-       01 WPARM-TESTE-5     PIC  X(34) VALUE 
-          'SSR(ZLEN,ABD,TESTE),OPT(1),NC'.  
-       01 WPARM-TESTE-6     PIC  X(34) VALUE 
-          'NONUMCHECK'.  
-       01 WPARM-TESTE-7     PIC  X(34) VALUE 
-          'NOSSR'. 
-       01 WPARM-TESTE-8     PIC  X(34) VALUE 
-          'NC(ZON(ALPHNUM),PAC,BIN,MSG)'. 
+       01 Wparm-teste-1     Pic  X(34) Value 
+          'Test,Ssr(Zlen,Abd),Noopt,Opt(0)'.
+       01 Wparm-teste-2     Pic  X(34) Value 
+          'Test(Dawrf),Ssr(Zlen,Abd),Noopt'.  
+       01 Wparm-teste-3     Pic  X(34) Value 
+          'Ssr(Zlen,Abd),Nooptmize'.   
+       01 Wparm-teste-4     Pic  X(34) Value 
+          'Ssr(Zlen,Abd),Nooptmize'.  
+       01 Wparm-teste-5     Pic  X(34) Value 
+          'Ssr(Zlen,Abd,Teste),Opt(1),Nc'.  
+       01 Wparm-teste-6     Pic  X(34) Value 
+          'Nonumcheck'.  
+       01 Wparm-teste-7     Pic  X(34) Value 
+          'Nossr'. 
+       01 Wparm-teste-8     Pic  X(34) Value 
+          'Nc(Zon(Alphnum),Pac,Bin,Msg)'. 
 
-       01 WPARM-USR         PIC  X(34) VALUE SPACES.                
-       01 FILLER REDEFINES WPARM-USR.
-          03 WPARM-R        PIC  X(01) OCCURS 34 TIMES.
-       01 WPARM-LISTA.
-          03 WPARM-LISTA-L  PIC  X(34) OCCURS 34 TIMES.
+       01 Wparm-usr         Pic  X(34) Value Spaces.                
+       01 Filler Redefines Wparm-usr.
+          03 Wparm-r        Pic  X(01) Occurs 34 Times.
+       01 Wparm-lista.
+          03 Wparm-lista-l  Pic  X(34) Occurs 34 Times.
   
-       01 WIND-INI          PIC S9(06) COMP VALUE ZEROS.
-       01 WIND-FIM          PIC S9(06) COMP VALUE ZEROS.
-       01 WIND-1            PIC S9(06) COMP VALUE ZEROS.
-       01 WIND-2            PIC S9(06) COMP VALUE ZEROS.
-       01 WOPEN-SCOP        PIC S9(06) COMP VALUE ZEROS.
-       01 WFL-ESCOPO        PIC  X(01)      VALUE SPACES.
-       01 WTAM              PIC S9(06) COMP VALUE ZEROS.
+       01 Wind-ini          Pic S9(06) Comp Value Zeros.
+       01 Wind-fim          Pic S9(06) Comp Value Zeros.
+       01 Wind-1            Pic S9(06) Comp Value Zeros.
+       01 Wind-2            Pic S9(06) Comp Value Zeros.
+       01 Wopen-scop        Pic S9(06) Comp Value Zeros.
+       01 Wfl-escopo        Pic  X(01)      Value Spaces.
+       01 Wtam              Pic S9(06) Comp Value Zeros.
 
-       PROCEDURE DIVISION.
+       Procedure Division.
 
-       RTR-PROCESS            SECTION.
+       Rtr-process            Section.
            
-           DISPLAY 'Begin of program'
+           Display 'Begin Of Program'
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 1  : ' WPARM-TESTE-1
-           INITIALIZE WPARM-USR     
-           MOVE WPARM-TESTE-1 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 1  : ' Wparm-teste-1
+           Initialize Wparm-usr     
+           Move Wparm-teste-1 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 2  : ' WPARM-TESTE-2
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-2 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 2  : ' Wparm-teste-2
+           Initialize Wparm-usr   
+           Move Wparm-teste-2 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 3  : ' WPARM-TESTE-3
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-3 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 3  : ' Wparm-teste-3
+           Initialize Wparm-usr   
+           Move Wparm-teste-3 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 4  : ' WPARM-TESTE-4
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-4 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 4  : ' Wparm-teste-4
+           Initialize Wparm-usr   
+           Move Wparm-teste-4 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 5  : ' WPARM-TESTE-5
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-5 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 5  : ' Wparm-teste-5
+           Initialize Wparm-usr   
+           Move Wparm-teste-5 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 6  : ' WPARM-TESTE-6
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-6 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 6  : ' Wparm-teste-6
+           Initialize Wparm-usr   
+           Move Wparm-teste-6 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 7  : ' WPARM-TESTE-7
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-7 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 7  : ' Wparm-teste-7
+           Initialize Wparm-usr   
+           Move Wparm-teste-7 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'TESTE 8  : ' WPARM-TESTE-8
-           INITIALIZE WPARM-USR   
-           MOVE WPARM-TESTE-8 TO WPARM-USR 
-           PERFORM RTR-CHECK-PARM
+           Display ' '
+           Display 'Teste 8  : ' Wparm-teste-8
+           Initialize Wparm-usr   
+           Move Wparm-teste-8 To Wparm-usr 
+           Perform Rtr-check-parm
 
-           DISPLAY ' '
-           DISPLAY 'End of program'.
+           Display ' '
+           Display 'End Of Program'.
 
-           STOP RUN.
-       RTR-PROCESS-X.         EXIT.
+           Stop Run.
+       Rtr-process-x.         Exit.
 
-       RTR-CHECK-PARM         SECTION.
-           INITIALIZE           WPARM-LISTA
-           MOVE 1            TO WIND-INI WIND-2  
-           MOVE ZEROS        TO WIND-FIM WTAM  
-                                WOPEN-SCOP
+       Rtr-check-parm         Section.
+           Initialize           Wparm-lista
+           Move 1            To Wind-ini Wind-2  
+           Move Zeros        To Wind-fim Wtam  
+                                Wopen-scop
            
-           INSPECT WPARM-USR TALLYING WTAM FOR CHARACTERS BEFORE '  '
-           DISPLAY 'Length: ' WTAM
-           PERFORM VARYING WIND-1 FROM 1 BY 1
-                     UNTIL WIND-1 GREATER WTAM + 1         
-               ADD  1  TO WIND-FIM
-               EVALUATE WPARM-R(WIND-1)
-                  WHEN ',' 
-                  WHEN SPACES  
-                       IF   WOPEN-SCOP EQUAL ZEROS
-                            SUBTRACT 1 FROM WIND-FIM                      
-                            MOVE WPARM-USR(WIND-INI : WIND-FIM) 
-                                              TO  WPARM-LISTA-L(WIND-2)
-                            DISPLAY 'Parameter (' WIND-2 '): ' 
-                                    WPARM-LISTA-L(WIND-2)
+           Inspect Wparm-usr Tallying Wtam For Characters Before '  '
+           Display 'Length: ' Wtam
+           Perform Varying Wind-1 From 1 By 1
+                     Until Wind-1 Greater Wtam + 1         
+               Add  1  To Wind-fim
+               Evaluate Wparm-r(Wind-1)
+                  When ',' 
+                  When Spaces  
+                       If   Wopen-scop Equal Zeros
+                            Subtract 1 From Wind-fim                      
+                            Move Wparm-usr(Wind-ini : Wind-fim) 
+                                              To  Wparm-lista-l(Wind-2)
+                            Display 'Parameter (' Wind-2 '): ' 
+                                    Wparm-lista-l(Wind-2)
                             
-                            ADD  1            TO  WIND-2 WIND-FIM
-                            ADD WIND-FIM      TO  WIND-INI 
-                            MOVE ZEROS        TO  WIND-FIM                   
-                       END-IF    
-                  WHEN '('
-                       ADD   1    TO   WOPEN-SCOP
-                  WHEN ')'
-                       SUBTRACT 1 FROM WOPEN-SCOP
-               END-EVALUATE    
-           END-PERFORM.
-       RTR-CHECK-PARM-X.        EXIT.
+                            Add  1            To  Wind-2 Wind-fim
+                            Add Wind-fim      To  Wind-ini 
+                            Move Zeros        To  Wind-fim                   
+                       End-if    
+                  When '('
+                       Add   1    To   Wopen-scop
+                  When ')'
+                       Subtract 1 From Wopen-scop
+               End-evaluate    
+           End-perform.
+       Rtr-check-parm-x.        Exit.
     
