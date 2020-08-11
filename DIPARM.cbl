@@ -6,21 +6,21 @@
         *> With Verbs
 
        01 Wparm-teste-1     Pic  X(34) Value 
-          'Test,Ssr(Zlen,Abd),Noopt,Opt(0)'.
+          'TEST,SSR(ZLEN,ABD),NOOPT,OPT(0)'.
        01 Wparm-teste-2     Pic  X(34) Value 
-          'Test(Dawrf),Ssr(Zlen,Abd),Noopt'.  
+          'TEST(DAWRF),SSR(ZLEN,ABD),NOOPT'.  
        01 Wparm-teste-3     Pic  X(34) Value 
-          'Ssr(Zlen,Abd),Nooptmize'.   
+          'SSR(ZLEN,ABD),NOOPTMIZE'.   
        01 Wparm-teste-4     Pic  X(34) Value 
-          'Ssr(Zlen,Abd),Nooptmize'.  
+          'SSR(ZLEN,ABD),NOOPTMIZE'.  
        01 Wparm-teste-5     Pic  X(34) Value 
-          'Ssr(Zlen,Abd,Teste),Opt(1),Nc'.  
+          'SSR(ZLEN,ABD,TESTE),OPT(1),NC'.  
        01 Wparm-teste-6     Pic  X(34) Value 
-          'Nonumcheck'.  
+          'NONUMCHECK'.  
        01 Wparm-teste-7     Pic  X(34) Value 
-          'Nossr'. 
+          'NOSSR'. 
        01 Wparm-teste-8     Pic  X(34) Value 
-          'Nc(Zon(Alphnum),Pac,Bin,Msg)'. 
+          'NC(ZON(ALPHNUM),PAC,BIN,MSG)'. 
 
        01 Wparm-usr         Pic  X(34) Value Spaces.                
        01 Filler Redefines Wparm-usr.
