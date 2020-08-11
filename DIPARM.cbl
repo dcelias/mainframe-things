@@ -18,12 +18,17 @@
           'NOSSR'. 
        01 Wparm-teste-8     Pic  X(34) Value 
           'NC(ZON(ALPHNUM),PAC,BIN,MSG)'. 
-
-       01 Wparm-usr         Pic  X(34) Value Spaces.                
+       01 Wparm-teste-9     Pic  X(34) Value 
+          'SSR(ZLEN,ABD),       NOOPTMIZE    '.  
+       01 Wparm-teste-10    Pic  X(34) Value 
+          'SSR(ZLEN,ABD) NOOPTMIZE'.
+       01 Wparm-teste-11    Pic  X(34) Value 
+          'SSR(ZLEN,ABD) NOOPTMIZE,1234567890'.
+       01 Wparm-usr         Pic  X(35) Value Spaces.                
        01 Filler Redefines Wparm-usr.
-          03 Wparm-r        Pic  X(01) Occurs 34 Times.
+          03 Wparm-r        Pic  X(01) Occurs 35 Times.
        01 Wparm-lista.
-          03 Wparm-lista-l  Pic  X(34) Occurs 34 Times.
+          03 Wparm-lista-l  Pic  X(35) Occurs 34 Times.
   
        01 Wind-ini          Pic S9(06) Comp Value Zeros.
        01 Wind-fim          Pic S9(06) Comp Value Zeros.
@@ -85,6 +90,24 @@
            Display 'Teste 8  : ' Wparm-teste-8
            Initialize Wparm-usr   
            Move Wparm-teste-8 To Wparm-usr 
+           Perform Rtr-check-parm
+
+           Display ' '
+           Display 'Teste 9  : ' Wparm-teste-9
+           Initialize Wparm-usr   
+           Move Wparm-teste-9 To Wparm-usr 
+           Perform Rtr-check-parm
+
+           Display ' '
+           Display 'Teste 10  : ' Wparm-teste-10
+           Initialize Wparm-usr   
+           Move Wparm-teste-10 To Wparm-usr 
+           Perform Rtr-check-parm
+
+           Display ' '
+           Display 'Teste 11  : ' Wparm-teste-11
+           Initialize Wparm-usr   
+           Move Wparm-teste-11 To Wparm-usr 
            Perform Rtr-check-parm
 
            Display ' '
