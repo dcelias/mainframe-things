@@ -1,0 +1,371 @@
+1                       J E S 2  J O B  L O G  --  S Y S T E M  S 0 W 1  --  N O D E  S 0 W 1
+0
+ 19.11.39 JOB00816 ---- THURSDAY,  17 AUG 2017 ----
+ 19.11.39 JOB00816  IRR010I  USERID IBMUSER  IS ASSIGNED TO THIS JOB.
+ 19.11.39 JOB00816  IEF677I WARNING MESSAGE(S) FOR JOB COMPASM  ISSUED
+ 19.11.39 JOB00816  ICH70001I IBMUSER  LAST ACCESS AT 19:10:29 ON THURSDAY, AUGUST 17, 2017
+ 19.11.39 JOB00816  $HASP373 COMPASM  STARTED - INIT 1    - CLASS A        - SYS S0W1
+ 19.11.39 JOB00816  IEF403I COMPASM - STARTED - TIME=19.11.39
+ 19.11.39 JOB00816  -                                      -----TIMINGS (MINS.)------                          -----PAGING COUNTS----
+ 19.11.39 JOB00816  -STEPNAME PROCSTEP    RC   EXCP   CONN       TCB       SRB  CLOCK          SERV  WORKLOAD  PAGE  SWAP   VIO SWAPS
+ 19.11.39 JOB00816  -COMPASM              00    267      0       .00       .00     .0           638  SYSTEM       0     0     3     0
+ 19.11.39 JOB00816  -LNKASM               00     45      0       .00       .00     .0                SYSTEM       0     0     2     0
+ 19.11.39 JOB00816  IEF404I COMPASM - ENDED - TIME=19.11.39
+ 19.11.39 JOB00816  -COMPASM  ENDED.  NAME-ELIADIE              TOTAL TCB CPU TIME=      .00 TOTAL ELAPSED TIME=    .0
+ 19.11.39 JOB00816  $HASP395 COMPASM  ENDED
+0------ JES2 JOB STATISTICS ------
+-  17 AUG 2017 JOB EXECUTION DATE
+-           21 CARDS READ
+-          366 SYSOUT PRINT RECORDS
+-            0 SYSOUT PUNCH RECORDS
+-           16 SYSOUT SPOOL KBYTES
+-         0.00 MINUTES EXECUTION TIME
+         1 //COMPASM JOB IBMUSER,ELIADIE,NOTIFY=&SYSUID,                           JOB00816
+           //   MSGCLASS=X,MSGLEVEL=(1,1),REGION=0M,TIME=(05,00)
+           IEFC653I SUBSTITUTION JCL - IBMUSER,ELIADIE,NOTIFY=IBMUSER,MSGCLASS=X,MSGLEVEL=(1,1),REGION=0M,TIME=(05,00)
+         2 //   SET SOURCE=DCEBR14
+           //******************************************
+           //* COMPILE ASSEMBLER CODE
+           //******************************************
+         3 //COMPASM  EXEC PGM=ASMA90,PARM='OBJ,NODECK'
+         4 //SYSIN    DD  DISP=OLD,DSN=SYSC.ELIADIE.SRC(&SOURCE)
+           IEFC653I SUBSTITUTION JCL - DISP=OLD,DSN=SYSC.ELIADIE.SRC(DCEBR14)
+         5 //SYSLIB   DD  DISP=SHR,DSN=SYS1.MACLIB
+         6 //SYSLIN   DD  DISP=(,PASS),DSN=&&OBJECT
+         7 //SYSPRINT DD  SYSOUT=*
+           //******************************************
+           //* LINKEDIT ASSEMBLER CODE
+           //******************************************
+         8 //LNKASM   EXEC PGM=IEWL,PARM='MAP,LET,LIST,NCAL',
+           //             COND=(8,LT)
+         9 //SYSLIN   DD  DISP=OLD,DSN=&&OBJECT
+        10 //SYSLMOD  DD  DISP=SHR,DSN=SYSC.LOADLIB(&SOURCE)
+           IEFC653I SUBSTITUTION JCL - DISP=SHR,DSN=SYSC.LOADLIB(DCEBR14)
+        11 //SYSUT1   DD  UNIT=(SYSDA,SEP=(SYSLMOD,SYSLIN)),
+           //             SPACE=(1024,(100,10),RLSE),DISP=(,DELETE)
+        12 //SYSPRINT DD  SYSOUT=*
+  STMT NO. MESSAGE
+ -
+         9 IEF648I INVALID DISP FIELD- PASS SUBSTITUTED
+ ICH70001I IBMUSER  LAST ACCESS AT 19:10:29 ON THURSDAY, AUGUST 17, 2017
+ IEF236I ALLOC. FOR COMPASM COMPASM
+ IEF237I 0A83 ALLOCATED TO SYSIN
+ IEF237I 0A80 ALLOCATED TO SYSLIB
+ IGD100I VIO ALLOCATED TO DDNAME SYSLIN   DATACLAS (        )
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IEF142I COMPASM COMPASM - STEP WAS EXECUTED - COND CODE 0000
+ IEF285I   SYSC.ELIADIE.SRC                             KEPT
+ IEF285I   VOL SER NOS= S1SYS1.
+ IEF285I   SYS1.MACLIB                                  KEPT
+ IEF285I   VOL SER NOS= S1RES1.
+ IEF285I   SYS17229.T191139.RA000.COMPASM.OBJECT.H01    PASSED
+ IEF285I   IBMUSER.COMPASM.JOB00816.D0000101.?          SYSOUT
+ IEF373I STEP/COMPASM /START 2017229.1911
+ IEF032I STEP/COMPASM /STOP  2017229.1911
+         CPU:     0 HR  00 MIN  00.19 SEC    SRB:     0 HR  00 MIN  00.02 SEC
+         VIRT:   176K  SYS:   944K  EXT:  1582272K  SYS:    11124K
+         ATB- REAL:                     0K  SLOTS:                     0K
+              VIRT- ALLOC:       0M SHRD:       0M
+ IEF236I ALLOC. FOR COMPASM LNKASM
+ IEF237I VIO  ALLOCATED TO SYSLIN
+ IEF237I 0AA3 ALLOCATED TO SYSLMOD
+ IGD100I VIO ALLOCATED TO DDNAME SYSUT1   DATACLAS (        )
+ IEF237I JES2 ALLOCATED TO SYSPRINT
+ IEF142I COMPASM LNKASM - STEP WAS EXECUTED - COND CODE 0000
+ IEF285I   SYSC.LOADLIB                                 KEPT
+ IEF285I   VOL SER NOS= S1DBAR.
+ IEF285I   SYS17229.T191139.RA000.COMPASM.R0100015      DELETED
+ IEF285I   IBMUSER.COMPASM.JOB00816.D0000102.?          SYSOUT
+ IEF373I STEP/LNKASM  /START 2017229.1911
+ IEF032I STEP/LNKASM  /STOP  2017229.1911
+         CPU:     0 HR  00 MIN  00.05 SEC    SRB:     0 HR  00 MIN  00.00 SEC
+         VIRT:   144K  SYS:   256K  EXT:     1640K  SYS:    11104K
+         ATB- REAL:                     0K  SLOTS:                     0K
+              VIRT- ALLOC:       0M SHRD:       0M
+ IEF285I   SYS17229.T191139.RA000.COMPASM.OBJECT.H01    DELETED
+ IEF375I  JOB/COMPASM /START 2017229.1911
+ IEF033I  JOB/COMPASM /STOP  2017229.1911
+         CPU:     0 HR  00 MIN  00.24 SEC    SRB:     0 HR  00 MIN  00.02 SEC
+1                                         High Level Assembler Option Summary                   (PTF UI15809)   Page    1
+-                                                                                            HLASM R6.0  2017/08/17 19.11
+0  No Overriding ASMAOPT Parameters
+   Overriding Parameters-  OBJ,NODECK
+   No Process Statements
+
+
+   Options for this Assembly
+0  NOADATA
+     ALIGN
+   NOASA
+     BATCH
+     CODEPAGE(047C)
+   NOCOMPAT
+   NODBCS
+ 3 NODECK
+     DXREF
+     ESD
+   NOEXIT
+   NOFAIL
+     FLAG(0,ALIGN,CONT,EXLITW,NOIMPLEN,NOPAGE0,PUSH,RECORD,NOSUBSTR,USING0)
+   NOFOLD
+   NOGOFF
+   NOINFO
+     LANGUAGE(EN)
+   NOLIBMAC
+     LINECOUNT(60)
+     LIST(121)
+     MACHINE(,NOLIST)
+     MXREF(SOURCE)
+ 3   OBJECT
+     OPTABLE(UNI,NOLIST)
+   NOPCONTROL
+   NOPESTOP
+   NOPROFILE
+   NORA2
+   NORENT
+     RLD
+     RXREF
+     SECTALGN(8)
+     SIZE(MAX)
+   NOSUPRWARN
+     SYSPARM()
+   NOTERM
+   NOTEST
+     THREAD
+   NOTRANSLATE
+     TYPECHECK(MAGNITUDE,REGISTER)
+     USING(NOLIMIT,MAP,WARN(15))
+   NOWORKFILE
+     XREF(SHORT,UNREFS)
+
+   No Overriding DD Names
+1                                              External Symbol Dictionary                                       Page    2
+-Symbol   Type   Id     Address  Length   Owner Id Flags Alias-of                            HLASM R6.0  2017/08/17 19.11
+0DCEBR14   SD 00000001 00000000 00000080             00
+1                                                                                                               Page    3
+   Active Usings: None
+0  Loc  Object Code    Addr1 Addr2  Stmt   Source Statement                                  HLASM R6.0  2017/08/17 19.11
+0                                      1          PRINT NOGEN
+ 000000                00000 00080     2 DCEBR14  CSECT
+ 000000 90EC D00C            0000C     3          SAVE  (14,12)
+ 000004 0DC0                           7          BASR  R12,0
+                  R:C  00006           8          USING *,R12
+ 000006 50D0 C036            0003C     9          ST    R13,SAVEA+4
+ 00000A 41D0 C032            00038    10          LA    R13,SAVEA
+ 00000E 0700                          11          WTO   'DCEBR14 INVOKED'
+ 00002A 58D0 C036            0003C    20          L     R13,SAVEA+4
+ 00002E 98EC D00C            0000C    21          RETURN (14,12),RC=0
+ 000038                               26 SAVEA    DS    18F
+                       0000C          27 R12      EQU 12
+                       0000D          28 R13      EQU 13
+                       0000E          29 R14      EQU 14
+                                      30          END ,
+1                               Ordinary Symbol and Literal Cross Reference                                     Page    4
+-Symbol   Length   Value     Id    R Type Asm  Program   Defn References                     HLASM R6.0  2017/08/17 19.11
+0IHB0003A      2 00000028 00000001     H  H                18   14B
+ R12           1 0000000C 00000001 A   U                   27    7M    8U
+ R13           1 0000000D 00000001 A   U                   28    9    10M   20M
+ SAVEA         4 00000038 00000001     F  F                26    9M   10    20
+1                                  Unreferenced Symbols Defined in CSECTs                                       Page    5
+-  Defn  Symbol                                                                              HLASM R6.0  2017/08/17 19.11
+0     2  DCEBR14
+     29  R14
+1                                          Macro and Copy Code Source Summary                                   Page    6
+- Con Source                                        Volume    Members                        HLASM R6.0  2017/08/17 19.11
+0  L1 SYS1.MACLIB                                   S1RES1    RETURN   SAVE     SYSSTATE WTO
+1                                                      Using Map                                                Page    7
+-                                                                                            HLASM R6.0  2017/08/17 19.11
+   Stmt  -----Location----- Action ----------------Using----------------- Reg Max     Last Label and Using Text
+           Count      Id           Type          Value    Range     Id        Disp    Stmt
+0     8  00000006  00000001 USING  ORDINARY    00000006 00001000 00000001  12 00036     20 *,R12
+1                                   General Purpose Register Cross Reference                                    Page    8
+- Register  References (M=modified, B=branch, U=USING, D=DROP, N=index)                      HLASM R6.0  2017/08/17 19.11
+0    0(0)       6    23M
+     1(1)       6    14M   23M
+     2(2)       6    23M
+     3(3)       6    23M
+     4(4)       6    23M
+     5(5)       6    23M
+     6(6)       6    23M
+     7(7)       6    23M
+     8(8)       6    23M
+     9(9)       6    23M
+    10(A)       6    23M
+    11(B)       6    23M
+    12(C)       6     7M    8U   23M
+    13(D)       6     9    10M   20M   23
+    14(E)       6    23M   25B
+    15(F)       6    23M   24M
+1                                  Diagnostic Cross Reference and Assembler Summary                             Page    9
+-                                                                                            HLASM R6.0  2017/08/17 19.11
+0     No Statements Flagged in this Assembly
+ HIGH LEVEL ASSEMBLER, 5696-234, RELEASE 6.0, PTF UI15809
+0SYSTEM: z/OS 02.01.00              JOBNAME: COMPASM     STEPNAME: COMPASM    PROCSTEP: (NOPROC)
+0Data Sets Allocated for this Assembly
+  Con DDname   Data Set Name                                Volume  Member
+   P1 SYSIN    SYSC.ELIADIE.SRC                             S1SYS1  DCEBR14
+   L1 SYSLIB   SYS1.MACLIB                                  S1RES1
+      SYSLIN   SYS17229.T191139.RA000.COMPASM.OBJECT.H01
+      SYSPRINT IBMUSER.COMPASM.JOB00816.D0000101.?
+
+ 1581436K allocated to Buffer Pool       Storage required     528K
+      15 Primary Input Records Read         3738 Library Records Read                  0 Work File Reads
+       0 ASMAOPT Records Read                137 Primary Print Records Written         0 Work File Writes
+       4 Object Records Written                0 ADATA Records Written
+0Assembly Start Time: 19.11.39 Stop Time: 19.11.39 Processor Time: 00.00.00.1250
+ Return Code 000
+
+1z/OS V2 R1 BINDER     19:11:39 THURSDAY AUGUST 17, 2017
+ BATCH EMULATOR  JOB(COMPASM ) STEP(LNKASM  ) PGM= IEWL
+ IEW2278I B352 INVOCATION PARAMETERS - MAP,LET,LIST,NCAL
+ IEW2650I 5102 MODULE ENTRY NOT PROVIDED.  ENTRY DEFAULTS TO SECTION DCEBR14.
+
+1                         *** M O D U L E  M A P ***
+
+ ---------------
+ CLASS  B_TEXT            LENGTH =       80  ATTRIBUTES = CAT,   LOAD, RMODE= 24
+                          OFFSET =        0 IN SEGMENT 001     ALIGN = DBLWORD
+ ---------------
+
+  SECTION    CLASS                                      ------- SOURCE --------
+   OFFSET   OFFSET  NAME                TYPE    LENGTH  DDNAME   SEQ  MEMBER
+
+                 0  DCEBR14            CSECT        80  SYSLIN    01  **NULL**
+1          ***  DATA SET SUMMARY  ***
+
+ DDNAME    CONCAT   FILE IDENTIFICATION
+
+ SYSLIN      01     SYS17229.T191139.RA000.COMPASM.OBJECT.H01
+
+           *** E N D  O F  M O D U L E  M A P ***
+
+
+
+                                 *** O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+1PROCESSING OPTIONS:
+
+    ALIASES             NO
+    ALIGN2              NO
+    AMODE               UNSPECIFIED
+    CALL                NO
+    CASE                UPPER
+    COMPAT              UNSPECIFIED
+    COMPRESS            AUTO
+    DCBS                NO
+    DYNAM               NO
+    EXTATTR             UNSPECIFIED
+    EXITS:              NONE
+    FILL                NONE
+    GID                 UNSPECIFIED
+    HOBSET              NO
+    INFO                NO
+    LET                 08
+    LINECT              060
+    LIST                SUMMARY
+    LISTPRIV            NO
+    LONGPARM            NO
+    MAP                 YES
+    MAXBLK              032760
+    MODMAP              NO
+    MSGLEVEL            00
+    OVLY                NO
+    PRINT               YES
+    RES                 NO
+    REUSABILITY         UNSPECIFIED
+    RMODE               UNSPECIFIED
+    SIGN                NO
+    STORENX             NOREPLACE
+    STRIPCL             NO
+    STRIPSEC            NO
+    SYMTRACE
+    TERM                NO
+    TRAP                ON
+    UID                 UNSPECIFIED
+    UPCASE              NO
+    WKSPACE             000000K,000000K
+    XCAL                NO
+    XREF                NO
+    ***END OF OPTIONS***
+
+
+
+
+1SAVE OPERATION SUMMARY:
+
+    MEMBER NAME         DCEBR14
+    LOAD LIBRARY        SYSC.LOADLIB
+    PROGRAM TYPE        LOAD MODULE
+    VOLUME SERIAL       S1DBAR
+    MAX BLOCK           6144
+    DISPOSITION         REPLACED
+    TIME OF SAVE        19.11.39  AUG 17, 2017
+
+
+1SAVE MODULE ATTRIBUTES:
+
+    AC                  000
+    AMODE                24
+    COMPRESSION         NONE
+    DC                  NO
+    EDITABLE            YES
+    EXCEEDS 16MB        NO
+    EXECUTABLE          YES
+    LONGPARM            NO
+    MIGRATABLE          YES
+    OL                  NO
+    OVLY                NO
+    PACK,PRIME          NO,NO
+    PAGE ALIGN          NO
+    REFR                NO
+    RENT                NO
+    REUS                NO
+    RMODE                24
+    SCTR                NO
+    SIGN                NO
+    SSI
+    SYM GENERATED       NO
+    TEST                NO
+    XPLINK              NO
+    MODULE SIZE (HEX)   00000080
+
+
+1 ENTRY POINT AND ALIAS SUMMARY:
+
+  NAME:            ENTRY TYPE AMODE C_OFFSET CLASS NAME        STATUS
+
+  DCEBR14           MAIN_EP      24 00000000 B_TEXT
+
+                          *** E N D   O F   O P E R A T I O N   S U M M A R Y   R E P O R T ***
+
+
+
+
+1z/OS V2 R1 BINDER     19:11:39 THURSDAY AUGUST 17, 2017
+ BATCH EMULATOR  JOB(COMPASM ) STEP(LNKASM  ) PGM= IEWL
+ IEW2008I 0F03 PROCESSING COMPLETED.  RETURN CODE =  0.
+
+
+
+1----------------------
+ MESSAGE SUMMARY REPORT
+ ----------------------
+  TERMINAL MESSAGES      (SEVERITY = 16)
+  NONE
+
+  SEVERE MESSAGES        (SEVERITY = 12)
+  NONE
+
+  ERROR MESSAGES         (SEVERITY = 08)
+  NONE
+
+  WARNING MESSAGES       (SEVERITY = 04)
+  NONE
+
+  INFORMATIONAL MESSAGES (SEVERITY = 00)
+  2008  2278  2650
+
+
+  **** END OF MESSAGE SUMMARY REPORT ****
+
+
