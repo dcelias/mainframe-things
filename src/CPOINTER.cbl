@@ -3,7 +3,7 @@
        author. Diego Correia Elias
       *----------------------------------------------------------------*
       *    Example of linked list using Language Environment utilities:
-      *    1) Alloc memory trougth CEECRHP and CEEGTST to build 
+      *    1) Alloc memory trougth CEECRHP and CEEGTST to build
       *    an linked list (10 itens) and display it
       *    2) Call subroutine DPOINTER to remove itens from linked list
       *    3) Display linked list after the remove to check if its ok!
@@ -13,6 +13,7 @@
        01  lcount            pic  9(4) usage display value 0.
        01  heapid            pic s9(9) binary value 0.
        01  nbytes            pic s9(9) binary.
+       01  msgdest           pic S9(9) binary value 2.
        01  incr              pic s9(9) binary value 0.
        01  opts              pic s9(9) binary value 0.
 
@@ -21,15 +22,15 @@
            05  filler        pic  x(8).
            copy CEEIGZCT.
            05  filler        pic  x(4).
-       01  addrss usage is pointer value null.
-       01  anchor usage is pointer value null.
-       01  DPOINTER pic x(08) value 'DPOINTER'.
+       01  addrss            usage is pointer value null.
+       01  anchor            usage is pointer value null.
+       01  DPOINTER          pic x(08) value 'DPOINTER'.
 
        linkage section.
            COPY  POINTERW.
 
        procedure division using pointerw-area list-item.
- 
+
        rt-begin-processing.
 
            display ' '
@@ -76,7 +77,7 @@
                      " storage at location " addrss
                      " from heap number "    heapid
 
-             if   first-item = null 
+             if   first-item = null
                   set first-item       to addrss
              else
                   set next-item        to addrss
@@ -84,11 +85,11 @@
 
              set  address of list-item to addrss
              set  next-item            to null
-              
+
              string "item" lcount
                     delimited by size into item
 
-             display "CPOINTER - Allocated item : " item 
+             display "CPOINTER - Allocated item : " item
                      " on address " addrss
              display " "
 
@@ -116,31 +117,8 @@
            display "CPOINTER - End of list ".
 
        rtr-consit-cee-return.
-           evaluate true
-               when CEE0P2
-                    display "CPOINTER - Heap storage control "
-                            "information was damaged."
-                    goback
-               when CEE0PA
-                    display "CPOINTER - The storage address in a free "
-                            "storage (CEEFRST) request was not "
-                            "recognized, or heap storage (CEECZST) "
-                            "control information was damaged or The "
-                            "initial size value supplied in a create "
-                            "heap request was unsupported."
-                    goback
-               when CEE0P5
-                    display "CPOINTER - The increment size value "
-                            "supplied in a create heap request was "
-                            "unsupported."
-                    goback
-               when CEE0P6
-                    display "CPOINTER - The options value supplied in "
-                            "a create heap request was unrecognized."
-                    goback
-               when CEE0PD
-                    display "CPOINTER - Insufficient storage was "
-                    display "available to satisfy a get storage "
-                    display "request. "
-                    goback
-           end-evaluate.
+
+           call "CEEMSG" using fc, msgdest, omitted
+           if    not CEE000
+                 goback
+           end-if.     

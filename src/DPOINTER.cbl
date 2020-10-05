@@ -2,7 +2,7 @@
        program-id. DPOINTER initial.
        author. Diego Correia Elias
       *----------------------------------------------------------------*
-      *    Example of a program that removes several items from a 
+      *    Example of a program that removes several items from a
       *    linked list using Language Environment utilities.
       *----------------------------------------------------------------*
        data division.
@@ -12,6 +12,7 @@
            05  filler        pic x(8).
            copy CEEIGZCT.
            05  filler        pic x(4).
+       01  msgdest           pic S9(9) binary value 2.
        01  atu-item          usage is pointer value null.
        01  ant-item          usage is pointer value null.
        01  next-item-aux     usage is pointer value null.
@@ -73,8 +74,8 @@
                  display ' '
                  display "DPOINTER - item: " item
                          " will be removed "
-                 display "DPOINTER - Adjusting the pointers to " 
-                         "remove references to this occurrence:"        
+                 display "DPOINTER - Adjusting the pointers to "
+                         "remove references to this occurrence:"
       *          Salva a referencia do proximo item que o item que
       *          estamos removendo apontava
                  set next-item-aux        to next-item
@@ -106,34 +107,8 @@
            display 'DPOINTER - address of next-item : ' next-item.
 
        rtr-consit-cee-return.
-           evaluate true
-               when CEE000
-                    display "DPOINTER - The free service completed succe
-      -                     "ssfully."
-               when CEE0P2
-                    display "CPOINTER - Heap storage control "
-                            "information was damaged."
-                    goback
-               when CEE0PA
-                    display "CPOINTER - The storage address in a free "
-                            "storage (CEEFRST) request was not "
-                            "recognized, or heap storage (CEECZST) "
-                            "control information was damaged or The "
-                            "initial size value supplied in a create "
-                            "heap request was unsupported."
-                    goback
-               when CEE0P5
-                    display "CPOINTER - The increment size value "
-                            "supplied in a create heap request was "
-                            "unsupported."
-                    goback
-               when CEE0P6
-                    display "CPOINTER - The options value supplied in "
-                            "a create heap request was unrecognized."
-                    goback
-               when CEE0PD
-                    display "CPOINTER - Insufficient storage was "
-                    display "available to satisfy a get storage "
-                    display "request. "
-                    goback
-           end-evaluate.
+
+           call "CEEMSG" using fc, msgdest, omitted
+           if    not CEE000
+                 goback
+           end-if.       
