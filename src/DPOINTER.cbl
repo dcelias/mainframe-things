@@ -1,6 +1,3 @@
-CBL C,RENT,LIST,QUOTE
-CBL COPYLOC(SYSLIB,DSN(CEE.SCEESAMP))
-CBL COPYLOC(SYSLIB,DSN(Z02977.SOURCE))
        id division.
        program-id. DPOINTER initial.
        author. Diego Correia Elias
