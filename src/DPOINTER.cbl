@@ -1,3 +1,6 @@
+CBL C,RENT,LIST,QUOTE
+CBL COPYLOC(SYSLIB,DSN(CEE.SCEESAMP))
+CBL COPYLOC(SYSLIB,DSN(Z02977.SOURCE))
        id division.
        program-id. DPOINTER initial.
        author. Diego Correia Elias
@@ -42,13 +45,14 @@
 
               perform varying ind  from 1 by 1
                                       until ind  greater qtd
-                   perform rt-remove-item
+                    if    item equal tab-remove(ind)
+                          perform rt-remove-item
+                    end-if
               end-perform
 
               if    next-item not = nulls
-      *             Salva o ponteiro como anterior e...
+      *             Salva o ponteiro como anterior e
                     set ant-item to address of list-item
-
       *             ... vai para o proximo item!
                     set address of list-item to next-item
                     set atu-item to address of list-item
@@ -70,29 +74,37 @@
            goback.
 
        rt-remove-item.
-           if    item equal tab-remove(ind)
-                 display ' '
-                 display "DPOINTER - item: " item
-                         " will be removed "
-                 display "DPOINTER - Adjusting the pointers to "
-                         "remove references to this occurrence:"
-      *          Salva a referencia do proximo item que o item que
-      *          estamos removendo apontava
+
+           display ' '
+           display "DPOINTER - item: " item
+                   " will be removed "
+           display "DPOINTER - Adjusting the pointers to "
+                   "remove references to this occurrence:"
+      *    Reposiciona a lista no item anterior ao que queremos
+      *    remover.
+      *    Caso esse item seja o primeiro, mudamos a "cabeça" da
+      *    lista.
+           if    atu-item equal first-item
+                 set first-item           to next-item
+                 display "DPOINTER - The address of item"
+                         "(head item) " atu-item
+                         " now points to address of the next item"
+                         " (atu-item) " next-item
+           else
+      *    Salva a referencia do proximo item que o item que
+      *    estamos removendo apontava
                  set next-item-aux        to next-item
-
-      *          Reposiciona a lista no item anterior ao que queremos
-      *          remover
                  set address of list-item to ant-item
-
-      *          Alteramos a referencia ao proximo item para nao
-      *          referenciar mais o item que removemos e sim o proximo
+      *    Alteramos a referencia ao proximo item para nao
+      *    referenciar mais o item que removemos e sim o proximo
                  set next-item            to next-item-aux
-                 display "DPOINTER - The address of item (atu-item) "
-                          ant-item
-                         " now points to address of the next item "
-                         "(atu-item) " next-item
-                 perform rt-freestor
-           end-if.
+                 display "DPOINTER - The address of item"
+                         "(atu-item) " ant-item
+                         " now points to address of the next item"
+                         " (atu-item) " next-item
+           end-if
+
+           perform rt-freestor.
 
        rt-freestor.
            display "DPOINTER - Free storage for address " atu-item
@@ -111,4 +123,5 @@
            call "CEEMSG" using fc, msgdest, omitted
            if    not CEE000
                  goback
-           end-if.       
+           end-if.
+           
