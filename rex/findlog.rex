@@ -4,9 +4,9 @@ isfsysid="S0W1"
 isddate="mmddyyyy /"
 currday=date("C")
 currday=currday-2
-isflogstartdate=date("V",currday,"C")
+isflogstartdate=date("U",currday,"C")
 isflogstarttime=time("N")
-isflogstopdate=date("V")
+isflogstopdate=date("U")
 isflogstoptime=time("N")
 say 'Digite sua busca: '
 pull srchitem
