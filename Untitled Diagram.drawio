@@ -1,74 +1,116 @@
-<mxfile host="app.diagrams.net" modified="2021-07-26T03:03:11.093Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.55" etag="lTY-wxjdVVEZd1Z-yXZU" version="14.9.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-07-27T01:13:00.167Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36 Edg/92.0.902.55" etag="F5M9c9-PwT-VBb69c4wj" version="14.9.2" type="github">
   <diagram id="0EcZxe93aFkEBUZ7pKa0" name="Page-1">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1662" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-3" value="Cobol&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-3" value="Cobol&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-4" value="Parâmetros / Opções de Compilação&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-4" value="Parâmetros / Opções de Compilação&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="440" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-5" value="z/OS Binder (Linkedição)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-5" value="z/OS Binder (Linkedição)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="360" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-6" value="C/C++ on z/OS&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-6" value="C/C++ on z/OS&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="180" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-7" value="Java on z/OS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-7" value="Java on z/OS" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="270" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-9" value="Pré-Compilação CICS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-9" value="Pré-Compilação CICS" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="160" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-10" value="Pré-Compilação DB2" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-10" value="Pré-Compilação DB2" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="300" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-11" value="Bind, plano, collecitions, packages, grant, explain Stored Procedures etc&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-11" value="Bind, plano, collecitions, packages, grant, explain Stored Procedures etc&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="450" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-12" value="Language Environment" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-12" value="Language Environment" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="770" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-13" value="Storage Tunning CICS/ IMS / Batch" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-13" value="Storage Tunning CICS/ IMS / Batch" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="920" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-14" value="Ferramentas" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-14" value="Ferramentas" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-15" value="Strobe" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-15" value="Strobe" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="90" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-16" value="Abend-Aid" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-16" value="Abend-Aid" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="180" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-17" value="Xpediter Cobol CICS, IMS, Batch" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-17" value="Xpediter Cobol CICS, IMS, Batch" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="270" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-18" value="Code Coverage" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-18" value="Code Coverage" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="370" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-19" value="ChangeMan" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-19" value="ChangeMan" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="470" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-21" value="Distribuição" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-21" value="Distribuição" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="570" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-22" value="Eclipse" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-22" value="Eclipse" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="670" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-23" value="Como desenvolver um plugin em eclipse" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-23" value="Como desenvolver um plugin em eclipse" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="740" y="670" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-24" value="Como desenvolver REST/API para extrair informações de dentro do mainframe?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-24" value="Como desenvolver REST/API para extrair informações de dentro do mainframe?" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="740" y="750" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-25" value="Zowe" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-25" value="Zowe" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="590" y="760" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="4qUAyBkfXDqzjAxu6Q62-26" value="Linguagens de Compilação (Processo de Build)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="4qUAyBkfXDqzjAxu6Q62-26" value="Linguagens de Compilação (Processo de Build)" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-1" value="z/OS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-2" value="PDSe&lt;br&gt;Alocar, renomear, backups, IEBCOPY, IEBGENER, IEBUPDATE" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-3" value="Como consultar Dataclass?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-4" value="SMS" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-5" value="RACF" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-6" value="Quais recursos existem?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-7" value="Como funciona o gerenciamento de espaço? Volumes, etc" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-8" value="Datasets em multiplos volumes" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-9" value="VTOC, catalogo" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1860" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-10" value="Como saber se um disco é shareado ou não?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="90" width="120" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-11" value="Unix" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-12" value="Comandos básicos" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1181" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-13" value="Bash? Shell script?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Th7vP54gafijSclQXW6L-14" value="Como funciona um zFS?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="320" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
