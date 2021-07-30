@@ -1,0 +1,45 @@
+/* REXX */
+IsfRC = isfcalls( "ON" ) 
+if IsfRC <> 0 then do 
+    say "RC" IsfRC "returned from isfcalls( ON )" 
+    exit IsfRC 
+end 
+
+/* "Display" the ST panel to load the related variables */ 
+
+isfprefix = "Z02977*"
+isfowner = "Z02977"
+isffilter = "queue = print" 
+
+isfcols = "jname jobid ownerid queue jclass prtdest retcode" 
+address SDSF "isfexec st" 
+if  RC  <> 0 then do 
+    say "RC" RC "returned from ISFEXEC ST" 
+    call DisplayMessages 
+end 
+
+/* Process every line in the ST display */ 
+StRows  = isfrows
+do i    = 1 to StRows 
+/* Show job information */ 
+    say "Jobclass  : " jname.i
+    say "JobID     : " jobid.i
+    say "Owner ID  : " ownerid.i
+    say "queue     : " queue.i
+    say "jclass    : " prtdest.i
+    say "retcode   : " retcode.i
+    say "token (?) : " token.i
+end
+
+/* Unload the SDSF environment */ 
+call isfcalls "OFF" 
+
+exit 0
+
+/* Display the messages associated with the action */ 
+DisplayMessages: 
+say "isfmsg: '"isfmsg"'" 
+say isfmsg2.0 "long messages in the isfmsg2 stem:" 
+    do i = 1 to isfmsg2.0 
+say " '"isfmsg2.i"'" 
+end 
