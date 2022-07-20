@@ -1,4 +1,6 @@
 import os
+import tkinter
+from tkinter import filedialog
 
 def checkFile(file):
     #checks if path is a file
@@ -51,9 +53,15 @@ def getWords(file):
     content_list = sec_words.readlines()
     return content_list
 
-path_file  = input('Insira o caminho do arquivo ou diretório: \n')
+
+tkinter.Tk().withdraw() # prevents an empty tkinter window from appearing
+
+print('Informe o arquivo que você deseja editar os dados: \n')
+path_file  = filedialog.askopenfile().name
 type_file  = checkFile(path_file)
-path_words = input('Insira o caminho do arquivo com as palavras proibidas: \n')
+
+print('Informe o arquivo que contém a lista de palavras proibidas: \n')
+path_words = filedialog.askopenfile().name
 type_words = checkFile(path_words)
 
 if (type_words == 2):
