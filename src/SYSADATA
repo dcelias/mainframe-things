@@ -1,0 +1,133 @@
+       IDENTIFICATION DIVISION.                                              
+       PROGRAM-ID. SYSADATA.                                                 
+       ENVIRONMENT DIVISION.                                                 
+       INPUT-OUTPUT SECTION.                                                 
+       FILE-CONTROL.                                                         
+           SELECT SYSADATA-FILE                                              
+           ASSIGN TO SYSADATA.                                               
+       DATA DIVISION.                                                        
+       FILE SECTION.                                                         
+       FD SYSADATA-FILE                                                      
+           BLOCK CONTAINS 0 RECORDS                                          
+           RECORDING MODE IS V                                               
+           RECORD IS VARYING IN SIZE FROM 1 TO 1016                          
+           DEPENDING ON WS-RECORD-LENGTH                                     
+           DATA RECORD IS WS-INPUT-RECORD.                                   
+       01 FD-SYSADATA.                                                       
+        02 SYSADATA-HEADER   PIC X(1016).                                    
+       WORKING-STORAGE SECTION.                                              
+       01 WS-RECORD-LENGTH  PIC 9(4) BINARY VALUE ZEROS.                     
+       01 WFIM              PIC X(1) VALUE ZEROS.                            
+       01 WTOKEN            PIC 9(9) COMP VALUE ZEROS.               
+       01 WTOKEN-CODE       PIC 9(4) COMP VALUE ZEROS.               
+       01 WTOKEN-LENGTH     PIC 9(4) COMP VALUE ZEROS.               
+       01 WTOKEN-LST-COLUMN PIC 9(9) COMP VALUE ZEROS.               
+       01 WTOKEN-LST-LINE   PIC 9(9) COMP VALUE ZEROS.               
+       01 WTOKEN-FLAG       PIC X(1) VALUE SPACES.                   
+       01 WDISPLAY          PIC 9(10) VALUE ZEROS.                   
+       PROCEDURE DIVISION.                                           
+                                                                     
+           OPEN INPUT SYSADATA-FILE                                  
+                                                                     
+           PERFORM UNTIL WFIM = 'S'                                  
+             READ SYSADATA-FILE                                      
+               AT END MOVE 'S' TO WFIM                               
+             END-READ                                                
+                                                                     
+             IF WFIM EQUAL 'S'                                       
+               DISPLAY 'End of file reached. Exiting program.'       
+             ELSE                                                    
+               EVALUATE SYSADATA-HEADER(1:1)                         
+                 WHEN x'16'                                          
+                      DISPLAY "It's a High Level Assembler Program."         
+                 WHEN x'17'                                                  
+                      DISPLAY "It's a Cobol Program."                        
+                 WHEN x'40'                                                  
+                      DISPLAY "It's a High Level Assembler Program."         
+               END-EVALUATE                                                  
+                                                                             
+               EVALUATE SYSADATA-HEADER(2:2)                                 
+                 WHEN x'0000'                                                
+                      DISPLAY 'Job identification record'                    
+                 WHEN x'0001'                                                
+                      DISPLAY 'ADATA identification record'                  
+                 WHEN x'0002'                                                
+                      DISPLAY 'Compilation unit start / end record'          
+                 WHEN x'0010'                                                
+                      DISPLAY 'Options record'                               
+                 WHEN x'0020'                                                
+                      DISPLAY 'External symbol record'                       
+                 WHEN x'0024'                                                
+                      DISPLAY 'Parse tree record'                            
+                 WHEN x'0030'                                                
+                    DISPLAY 'Token record'                                 
+                                                                           
+                    MOVE     ZEROS                 TO WDISPLAY             
+                    MOVE     SYSADATA-HEADER(13:4) TO WTOKEN               
+                    MOVE     WTOKEN                TO WDISPLAY             
+                    DISPLAY '....Token           : '  WDISPLAY             
+                                                                           
+                    MOVE     ZEROS                 TO WDISPLAY             
+                    MOVE     SYSADATA-HEADER(17:2) TO WTOKEN-CODE          
+                    MOVE     WTOKEN-CODE           TO WDISPLAY             
+                    DISPLAY '....Token Code      : '  WDISPLAY             
+                                                                           
+                                                                           
+                    MOVE     ZEROS                 TO WDISPLAY             
+                    MOVE     SYSADATA-HEADER(19:2) TO WTOKEN-LENGTH        
+                    MOVE     WTOKEN-LENGTH         TO WDISPLAY             
+                    DISPLAY '....Token Length    : '  WDISPLAY             
+                                                                           
+                                                                           
+                    MOVE     ZEROS                 TO WDISPLAY             
+                    MOVE     SYSADATA-HEADER(21:4) TO WTOKEN-LST-COLUMN    
+                    MOVE     WTOKEN-LST-COLUMN     TO WDISPLAY               
+                    DISPLAY '....Token Column LST: '  WDISPLAY               
+                                                                             
+                                                                             
+                                                                             
+                    MOVE     ZEROS                 TO WDISPLAY               
+                    MOVE     SYSADATA-HEADER(25:4) TO WTOKEN-LST-LINE        
+                    MOVE     WTOKEN-LST-LINE       TO WDISPLAY               
+                    DISPLAY '....Token Line LST  : '  WDISPLAY               
+                                                                             
+                    MOVE     SYSADATA-HEADER(29:1) TO WTOKEN-FLAG            
+                    IF       WTOKEN-FLAG EQUAL x'80'                         
+                             DISPLAY '....Token is continued'                
+                    ELSE                                                     
+                         IF  WTOKEN-FLAG EQUAL x'40'                         
+                             DISPLAY '....Last piece of continued token'     
+                         ELSE                                                
+                             DISPLAY '....????'                              
+                         END-IF                                              
+                   END-IF                                                    
+                   DISPLAY '....Token text      : '                          
+                            SYSADATA-HEADER(37:WS-RECORD-LENGTH)     
+                 WHEN x'0032'                                        
+                      DISPLAY 'Source error record'                  
+                 WHEN x'0038'                                        
+                      DISPLAY 'Source record'                        
+                 WHEN x'0039'                                        
+                      DISPLAY 'COPY REPLACING record'                
+                 WHEN x'0042'                                        
+                      DISPLAY 'Symbol record'                        
+                 WHEN x'0044'                                        
+                      DISPLAY 'Symbol cross-reference record'        
+                 WHEN x'0046'                                        
+                      DISPLAY 'Nested program record'                
+                 WHEN x'0060'                                        
+                      DISPLAY 'Library record'                       
+                 WHEN x'0090'                                        
+                      DISPLAY 'Statistics record'                    
+                 WHEN x'0120'                                        
+                      DISPLAY 'EVENTS record'                        
+                 WHEN OTHER                                          
+                      DISPLAY '????'                                 
+               END-EVALUATE                      
+             END-IF                              
+           END-PERFORM.                          
+                                                 
+           CLOSE SYSADATA-FILE.                  
+                                                 
+           GOBACK.                               
+                                                 
